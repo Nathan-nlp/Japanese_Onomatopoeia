@@ -1,0 +1,13 @@
+.DS_Store
+.ipynb_checkpoints/
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Downloaded model weights and caches
+.cache/
+models/
+
+# Raw participant-level data must stay outside the repository
+data/raw/
