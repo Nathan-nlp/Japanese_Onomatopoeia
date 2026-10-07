@@ -81,12 +81,22 @@ PROJECT_ROOT = Path.cwd()
 if PROJECT_ROOT.name == "notebooks":
     PROJECT_ROOT = PROJECT_ROOT.parent
 
-DATA_PATH = PROJECT_ROOT / "data" / "processed" / "japanese_sensory_modeling.csv"
+PROJECT_DATA_PATH = PROJECT_ROOT / "data" / "processed" / "japanese_sensory_modeling.csv"
+COLAB_DATA_PATH = Path("/content/japanese_sensory_modeling.csv")
+DATA_PATH = PROJECT_DATA_PATH if PROJECT_DATA_PATH.exists() else COLAB_DATA_PATH
+
 RESULTS_DIR = PROJECT_ROOT / "results"
 FIGURES_DIR = PROJECT_ROOT / "figures"
 RESULTS_DIR.mkdir(exist_ok=True)
 FIGURES_DIR.mkdir(exist_ok=True)
 
+if not DATA_PATH.exists():
+    raise FileNotFoundError(
+        "Data file not found. In Colab, upload japanese_sensory_modeling.csv "
+        "to the session storage (/content), then run this cell again."
+    )
+
+print(f"Using data file: {DATA_PATH}")
 DATA_PATH
 """
     ),
