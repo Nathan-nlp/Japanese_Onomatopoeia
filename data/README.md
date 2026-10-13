@@ -11,3 +11,13 @@
 正式训练时必须使用 `use_in_primary_analysis == 1` 过滤数据。不要直接删除待核对词。
 
 原始参与者级文件没有复制到仓库，避免混淆原始数据与加工数据。重新生成此文件时使用 `scripts/prepare_modeling_data.py` 并明确提供来源路径。
+
+## 词族审查
+
+`review/ideophone_family_review.xlsx` 保留 108 个主要分析目标词。`Family review` 工作表中的黄色列需要人工确认：
+
+- `review_decision`：确认、拆分、合并或标记为需要讨论。
+- `final_family_id`：最终词族编号；拆分或合并时修改。
+- `review_notes`：记录依据和不确定之处。
+
+4 个包含多个词的候选词族排在表格最前面。全部 108 行完成审查并写回主表之前，模型输出只能视为暂定结果。
